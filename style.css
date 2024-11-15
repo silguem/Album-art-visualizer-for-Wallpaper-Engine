@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* Reset default styles and set up fullscreen layout */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Fallback color for loading state */
+}
+
+/* Background element that shows blurred album art */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    z-index: -1; /* Ensure background stays behind other elements */
+    
+    /* Add smooth transition for background changes */
+    transition: background-image 1s ease-in-out;
+}
+
+/* Main album art container */
+#album-art {
+    width: 300px;
+    height: 300px;
+    background: #000;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    
+    /* Add smooth transition for album art changes */
+    transition: background-image 0.5s ease-in-out;
+}
+
+.scrobble-container {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-align: left;
+    background: rgba(88, 88, 88, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(43, 43, 43, 0.2);
+    width: 300px;
+}
+
+#scrobble-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+#scrobble-list li {
+    padding: 10px;
+    color: aliceblue;
+    font-family: inter;
+    font-size: 16px;
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    /* border-bottom: none; */ /* Asegúrate de que no haya bordes aplicados */
+}
+
+/* Reduce opacity for second and third elements */
+#scrobble-list li:nth-child(2),
+#scrobble-list li:nth-child(3) {
+    opacity: 0.3;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+#scrobble-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Oculta el contenido desplazado fuera de la vista */
+    position: relative;
+}
+
+#scrobble-list li {
+    padding: 10px;
+    color: aliceblue;
+    font-family: inter;
+    font-size: 16px;
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+}
+
+/* Reduce opacity for second and third elements */
+#scrobble-list li:nth-child(2),
+#scrobble-list li:nth-child(3) {
+    opacity: 0.3;
+}
+
+/* Animación de desplazamiento hacia abajo */
+@keyframes scroll-down {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.scrolling li {
+    animation: scroll-down 0.5s ease-in-out forwards;
+}
+
+/* Animación para nueva canción que aparece */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.new-track {
+    animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.icon {
+    margin-right: 10px;
+}
